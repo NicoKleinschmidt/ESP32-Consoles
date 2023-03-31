@@ -4,7 +4,7 @@
 #include <esp_log.h>
 #include <esp_timer.h>
 
-#define RMT_MAX_RX_BYTES 34 // Maximum bytes received in a single read.
+#define RMT_MAX_RX_BYTES 8 // Maximum bytes received in a single read.
 
 const static rmt_receive_config_t n64_rmt_rx_config = {
     .signal_range_min_ns = 1000000000 / N64_RMT_RESOLUTION_HZ,
