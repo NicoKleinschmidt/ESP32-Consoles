@@ -11,10 +11,10 @@ class ConsoleNGC
 private:
     uint8_t _report[8];
     gpio_num_t _data;
+    bool _rumbleActive;
 
     N64Interface *_interface;
     TaskHandle_t _receiveTaskHandle;
-    SemaphoreHandle_t _receiveSemaphore;
     SemaphoreHandle_t _waitFrameSemaphore;
 
     static void receiveTask(void *arg);
@@ -41,6 +41,7 @@ public:
     int8_t c_stick_y();
     int8_t stick_x();
     int8_t stick_y();
+    bool rumble();
 
     void set_a(bool pressed);
     void set_b(bool pressed);
