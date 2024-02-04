@@ -102,6 +102,9 @@ esp_err_t NESConsoleWriter::initialize()
 {
     stop();
 
+    gpio_reset_pin(_data);
+    gpio_reset_pin(_latch);
+    gpio_reset_pin(_clock);
     gpio_set_direction(_data, gpio_mode_t::GPIO_MODE_OUTPUT);
     gpio_set_direction(_latch, gpio_mode_t::GPIO_MODE_INPUT);
     gpio_set_direction(_clock, gpio_mode_t::GPIO_MODE_INPUT);
@@ -133,6 +136,8 @@ esp_err_t NESConsoleWriter::initialize()
     
     gpio_set_pull_mode(_latch, gpio_pull_mode_t::GPIO_PULLUP_ONLY);
     gpio_set_pull_mode(_clock, gpio_pull_mode_t::GPIO_PULLUP_ONLY);
+
+    ESP_LOGD(TAG, "Initialized: data: %d, latch: %d, clock: %d", _data, _latch, _clock);
 
     return ESP_OK;
 }

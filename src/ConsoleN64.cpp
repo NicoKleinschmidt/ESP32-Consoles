@@ -26,7 +26,7 @@ void ConsoleN64::receiveTask(void *arg)
         }
         else
         {
-            esp_rom_printf("ERR ERR ERR\n");
+            // esp_rom_printf("ERR ERR ERR\n");
         }
         
         vTaskDelay(10 / portTICK_PERIOD_MS);

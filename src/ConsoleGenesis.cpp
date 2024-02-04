@@ -33,6 +33,13 @@ ConsoleGenesis::~ConsoleGenesis()
 
 esp_err_t ConsoleGenesis::initialize()
 {
+    gpio_reset_pin(_select);
+    gpio_reset_pin(_data0);
+    gpio_reset_pin(_data1);
+    gpio_reset_pin(_data2);
+    gpio_reset_pin(_data3);
+    gpio_reset_pin(_data4);
+    gpio_reset_pin(_data5);
     gpio_set_direction(_select, gpio_mode_t::GPIO_MODE_INPUT);
     gpio_set_direction(_data0, gpio_mode_t::GPIO_MODE_OUTPUT);
     gpio_set_direction(_data1, gpio_mode_t::GPIO_MODE_OUTPUT);
@@ -59,6 +66,8 @@ esp_err_t ConsoleGenesis::initialize()
 
     _lastTickUs = 0;
     _tickCounter = 0;
+
+    ESP_LOGD(TAG, "Initialized: select: %d, 0: %d, 1: %d, 2: %d, 3: %d, 4: %d, 5: %d", _select, _data0, _data1, _data2, _data3, _data4, _data5);
 
     return ESP_OK;
 }
